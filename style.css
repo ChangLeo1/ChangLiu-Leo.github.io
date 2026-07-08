@@ -72,6 +72,36 @@ section h2 {
   color: #0f172a;
 }
 
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-text p {
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+.about-photos {
+  flex: 1;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.about-photos img {
+  width: 48%;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
 .card {
   background-color: white;
   padding: 24px;
