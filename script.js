@@ -11,7 +11,7 @@ function updateDepth() {
 addEventListener('scroll', updateDepth, { passive: true });
 updateDepth();
 
-document.querySelectorAll('button.project-toggle').forEach((button) => {
+document.querySelectorAll('button.project-toggle:not(.case-study-button)').forEach((button) => {
   button.addEventListener('click', () => {
     const project = button.closest('.project');
     const open = project.classList.toggle('open');
