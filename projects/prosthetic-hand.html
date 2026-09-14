@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Chang Liu's engineering case study: multimodal perception feedback intelligent prosthetic hand using 8-channel sEMG, PNN gesture recognition, STM32 control, and multisensor feedback.">
+  <meta name="theme-color" content="#02182a">
+  <title>Intelligent Prosthetic Hand | Chang Liu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="prosthetic-hand.css">
+  <script src="prosthetic-hand.js" defer></script>
+</head>
+<body>
+  <div class="page-noise" aria-hidden="true"></div>
+  <header class="case-nav">
+    <a class="brand" href="../index.html#surface" aria-label="Back to Chang Liu portfolio"><span class="wave-mark"><i></i><i></i><i></i></span>CHANG LIU</a>
+    <nav aria-label="Case study navigation">
+      <a href="#overview">Overview</a>
+      <a href="#system">System</a>
+      <a href="#results">Results</a>
+    </nav>
+    <a class="back-link" href="../index.html#projects">← Portfolio</a>
+  </header>
+
+  <main>
+    <section class="case-hero" id="overview">
+      <div class="hero-orbit hero-orbit-one" aria-hidden="true"></div>
+      <div class="hero-orbit hero-orbit-two" aria-hidden="true"></div>
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span></span>ENGINEERING CASE STUDY · EMBEDDED AI · BIOMEDICAL SYSTEMS</p>
+        <h1>Making intention<br><em>tangible.</em></h1>
+        <p class="hero-lead">A multimodal intelligent prosthetic hand that converts muscle activity into motion, then closes the loop with pressure, tactile and temperature sensing.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#system">Explore the system <b>↓</b></a>
+          <a class="quiet-link" href="#results">Jump to results ↘</a>
+        </div>
+      </div>
+
+      <div class="hero-device reveal" aria-label="Stylised prosthetic hand system visualisation">
+        <div class="device-halo"></div>
+        <svg viewBox="0 0 520 560" role="img" aria-label="Abstract technical illustration of a prosthetic hand">
+          <defs>
+            <linearGradient id="handFill" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#d9fff6" stop-opacity=".92"/>
+              <stop offset="1" stop-color="#68c7d3" stop-opacity=".34"/>
+            </linearGradient>
+            <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <g class="hand-lines" fill="none" stroke="url(#handFill)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M213 460c-9-47-22-104-28-151l-14-118c-3-25 11-44 31-45 20-1 32 14 35 38l13 91-5-157c-1-24 12-42 33-42 20 0 32 15 33 39l5 152 12-135c2-23 16-39 35-36 19 2 29 18 27 40l-12 143 23-105c5-22 20-34 38-29 17 5 25 22 20 42l-31 127 34-63c10-19 28-26 44-17 17 10 19 31 8 49l-66 112c-24 42-53 80-82 106-31 29-68 41-114 31-43-9-55-38-59-71z"/>
+            <path d="M252 281c21 7 37 20 49 39M311 272c19 9 34 23 44 42M369 286c17 11 28 25 35 42" opacity=".56"/>
+          </g>
+          <g class="sensor-dot" filter="url(#glow)">
+            <circle cx="205" cy="181" r="7"/><circle cx="279" cy="112" r="7"/><circle cx="358" cy="130" r="7"/><circle cx="430" cy="180" r="7"/><circle cx="481" cy="252" r="7"/>
+          </g>
+          <g class="trace" fill="none" stroke="#ff8068" stroke-width="2">
+            <path d="M85 480c45-18 60-2 81-23 23-23 33 15 58-7 29-26 33 8 63-7"/>
+          </g>
+        </svg>
+        <div class="device-label label-a"><span></span>8-channel sEMG</div>
+        <div class="device-label label-b"><span></span>Closed-loop sensing</div>
+        <div class="device-label label-c"><span></span>STM32 control</div>
+      </div>
+
+      <div class="kpi-strip reveal">
+        <article><strong>96.8%</strong><span>Gesture recognition</span></article>
+        <article><strong>8</strong><span>sEMG channels</span></article>
+        <article><strong>24-D</strong><span>Feature vector</span></article>
+        <article><strong>6-DOF</strong><span>Mechanical design</span></article>
+      </div>
+    </section>
+
+    <section class="story section-shell">
+      <div class="section-kicker reveal"><span>01</span><p>THE CHALLENGE</p></div>
+      <div class="story-grid">
+        <h2 class="reveal">From muscle signal<br>to <em>meaningful action.</em></h2>
+        <div class="story-copy reveal">
+          <p class="lead">Conventional myoelectric prosthetic hands can be limited by low dexterity, rigid control strategies and weak sensory feedback.</p>
+          <p>This project was designed as a low-cost, real-time human–machine system. Surface electromyography captures motion intent, embedded processing classifies gestures, servo actuation executes the command, and fingertip sensing returns information about the physical interaction.</p>
+          <div class="role-card">
+            <small>MY ROLE</small>
+            <strong>Project Lead / Person in Charge</strong>
+            <p>Coordinated the project while contributing to embedded control, sEMG processing, gesture recognition and system integration.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="architecture section-shell" id="system">
+      <div class="section-kicker reveal"><span>02</span><p>SYSTEM ARCHITECTURE</p></div>
+      <div class="architecture-head reveal">
+        <h2>A closed loop,<br><em>not a one-way command.</em></h2>
+        <p>The design connects biological intent, signal processing, machine intelligence, embedded actuation and physical feedback into one interaction cycle.</p>
+      </div>
+
+      <div class="signal-flow reveal" aria-label="System signal flow">
+        <div class="flow-node accent"><small>01</small><strong>Human intent</strong><span>Muscle activation</span></div>
+        <i>→</i>
+        <div class="flow-node"><small>02</small><strong>8-ch sEMG</strong><span>Acquisition + filtering</span></div>
+        <i>→</i>
+        <div class="flow-node"><small>03</small><strong>Features</strong><span>MAV · RMS · WL</span></div>
+        <i>→</i>
+        <div class="flow-node"><small>04</small><strong>PNN</strong><span>Gesture classification</span></div>
+        <i>→</i>
+        <div class="flow-node"><small>05</small><strong>STM32</strong><span>PWM servo control</span></div>
+        <i>→</i>
+        <div class="flow-node accent-two"><small>06</small><strong>Motion</strong><span>Prosthetic hand</span></div>
+      </div>
+
+      <div class="feedback-loop reveal">
+        <span>PRESSURE</span><span>SLIP / TOUCH</span><span>TEMPERATURE</span><b>↺ MULTIMODAL FEEDBACK TO USER & CONTROLLER</b>
+      </div>
+    </section>
+
+    <section class="technical section-shell">
+      <div class="section-kicker reveal"><span>03</span><p>ENGINEERING LAYERS</p></div>
+      <div class="technical-grid">
+        <article class="tech-card reveal">
+          <div class="tech-index">A</div>
+          <p class="tech-tag">AI & SIGNAL PROCESSING</p>
+          <h3>sEMG → 24-D features → PNN</h3>
+          <p>Eight sEMG channels are segmented using a moving-average and threshold approach. Three time-domain features—MAV, RMS and WL—form a 24-dimensional vector for the PNN classifier.</p>
+          <div class="mini-spectrum" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </article>
+        <article class="tech-card reveal">
+          <div class="tech-index">B</div>
+          <p class="tech-tag">EMBEDDED CONTROL</p>
+          <h3>STM32F1 + PCA9685 + servos</h3>
+          <p>The STM32F1 is the control core. The PCA9685 provides multi-channel PWM output for servo positioning while sensor data is sampled through the microcontroller interface.</p>
+          <div class="chip-visual" aria-hidden="true"><span>STM32</span><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </article>
+        <article class="tech-card reveal">
+          <div class="tech-index">C</div>
+          <p class="tech-tag">MULTISENSOR FEEDBACK</p>
+          <h3>Pressure · tactile · temperature</h3>
+          <p>FSR402 sensors measure grip force, PVDF film detects touch and slip, and HDC1080 provides temperature sensing. Feedback is translated into vibration and temperature cues.</p>
+          <div class="sensor-row" aria-hidden="true"><i>F</i><i>P</i><i>T</i></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="detail-band">
+      <div class="section-shell detail-grid">
+        <div class="detail-copy reveal">
+          <p class="eyebrow pale"><span></span>MECHANICAL DESIGN</p>
+          <h2>Designed around<br><em>human-scale constraints.</em></h2>
+          <p>The proposal specifies a six-degree-of-freedom hand: two degrees of freedom at the thumb and one for each remaining finger. Tendon-driven servo actuation and return springs support finger motion.</p>
+        </div>
+        <div class="spec-board reveal">
+          <article><strong>≥ 12 cm</strong><span>Grasping range</span></article>
+          <article><strong>≤ 1.5 s</strong><span>Fastest finger closing time</span></article>
+          <article><strong>≤ 500 g</strong><span>Mass above the palm</span></article>
+          <article><strong>8 × 8 × 15 cm</strong><span>Maximum closed-hand envelope</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="results section-shell" id="results">
+      <div class="section-kicker reveal"><span>04</span><p>TESTING & RESULTS</p></div>
+      <div class="results-head reveal">
+        <h2>Evidence over<br><em>claims.</em></h2>
+        <p>The proposal records an 80/20 training-test split of approximately 480/120 samples and a separate 32-sample gesture evaluation in which one sample was misclassified.</p>
+      </div>
+      <div class="result-grid">
+        <div class="accuracy-card reveal">
+          <span class="ring" style="--score:96.8"><b>96.8<small>%</small></b></span>
+          <div><small>GESTURE RECOGNITION</small><h3>31 / 32 correct</h3><p>Reported result for eight gesture classes using the PNN classification model.</p></div>
+        </div>
+        <div class="gesture-card reveal">
+          <small>8 GESTURE CLASSES</small>
+          <div class="gesture-list"><span>A1 · Finger flexion</span><span>A2 · Relaxation</span><span>A3 · Gripping</span><span>A4 · Wrist flex / extend</span><span>A5 · Thumbs up</span><span>A6 · Five fingers spread</span><span>A7 · Two fingers extended</span><span>A8 · Ring + little finger flexed</span></div>
+        </div>
+      </div>
+
+      <div class="temperature reveal">
+        <div><small>TEMPERATURE FEEDBACK</small><h3>Closed-loop thermal response</h3><p>The system uses a Peltier device with PID control. At 27 °C room temperature, the proposal reports 7 s response at 25 °C and 31 °C targets, with longer response times for larger temperature differences.</p></div>
+        <div class="temp-chart" aria-label="Selected temperature response times"><span style="--h:20%"><b>7s</b><i>25°C</i></span><span style="--h:20%"><b>7s</b><i>31°C</i></span><span style="--h:47%"><b>17s</b><i>21°C</i></span><span style="--h:69%"><b>25s</b><i>39°C</i></span><span style="--h:100%"><b>46s</b><i>47°C</i></span></div>
+      </div>
+    </section>
+
+    <section class="outcomes section-shell">
+      <div class="section-kicker reveal"><span>05</span><p>PROJECT OUTPUTS</p></div>
+      <div class="outcome-grid">
+        <div class="outcome-lead reveal"><h2>Beyond the<br><em>prototype.</em></h2><p>The proposal lists one academic paper and five invention patents as team outputs around prosthetic control, multimodal sensing and biological signal acquisition.</p></div>
+        <div class="output-count reveal"><strong>01</strong><span>Academic paper listed</span></div>
+        <div class="output-count reveal"><strong>05</strong><span>Invention patents listed</span></div>
+      </div>
+      <details class="output-details reveal">
+        <summary>View listed paper & patent topics <span>+</span></summary>
+        <div>
+          <p><b>Paper:</b> Probabilistic Neural Network-Based Multimodal Perception Feedback Prosthetic Hand</p>
+          <p><b>Patent topics:</b> sEMG rehabilitation exoskeleton · drop-foot detection · multimodal perception feedback myoelectric prosthetic hand · multimodal biological-signal acquisition · multisensor gesture recognition</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="case-close">
+      <div class="close-glow"></div>
+      <div class="reveal">
+        <p class="eyebrow pale"><span></span>THE TAKEAWAY</p>
+        <h2>Signals became intent.<br>Sensors became <em>feeling.</em></h2>
+        <p>This project brought together embedded systems, signal processing, machine learning and sensor fusion around a human-centred engineering problem.</p>
+        <a class="button coral" href="../index.html#projects">Back to all projects <b>↗</b></a>
+      </div>
+      <footer><span>© 2026 CHANG LIU</span><a href="https://www.linkedin.com/in/chang-liu-monash" target="_blank" rel="noreferrer">LINKEDIN ↗</a><a href="https://github.com/ChangLeo1" target="_blank" rel="noreferrer">GITHUB ↗</a></footer>
+    </section>
+  </main>
+</body>
+</html>
